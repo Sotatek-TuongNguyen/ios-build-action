@@ -159,6 +159,14 @@ platform :ios do
       sdk: use_build_sdk ? ENV['BUILD_SDK'] : nil,
       destination: use_build_destination ? ENV['BUILD_DESTINATION'] : nil
     )
+    
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_ID"],
+      groups: ENV["FIREBASE_GROUP"],
+      firebase_cli_token: ENV["FIREBASE_TOKEN"],
+      ipa_path: 'output.ipa',
+      release_notes: "Lots of amazing new features to test out!"
+    )
 
     delete_keychain(name: 'ios-build.keychain')
   end
